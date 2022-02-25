@@ -8,6 +8,9 @@ class WinnerCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _mediaquery = MediaQuery.of(context);
+
     return BlocBuilder<WinnerBloc, WinnerState>(
       builder: (
         BuildContext context,
@@ -24,14 +27,33 @@ class WinnerCard extends StatelessWidget {
 
         if (state.status.isSuccess) {
           return Center(
+            child: SizedBox(
+              width: _mediaquery.size.width / 1.5,
+              height: _mediaquery.size.height / 2.0,
               child: Card(
-            child: Row(
-              children: [
-                Text('${state.winner!.id}'),
-                // TODO(Brydie): Add team data.
-              ],
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          state.winner!.name,
+                          style: _theme.textTheme.headline3,
+                        ),
+                        Text(
+                          '${state.winner!.venue}',
+                          style: _theme.textTheme.headline4,
+                        ),
+                      ],
+                    ),
+                    if (state.winner!.crestUrl != null)
+                      Image.network(state.winner!.crestUrl!),
+                  ],
+                ),
+              ),
             ),
-          ));
+          );
         }
 
         return const Center(child: CircularProgressIndicator());

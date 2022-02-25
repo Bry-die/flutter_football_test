@@ -39,6 +39,7 @@ class _MyAppState extends State<MyApp> {
             appBar: AppBar(
               title: const Text('And the winner is...'),
             ),
+            backgroundColor: const Color.fromARGB(255, 238, 238, 238),
             body: const WinnerCard(),
           ),
         ),
