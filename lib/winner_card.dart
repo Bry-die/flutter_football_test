@@ -27,28 +27,31 @@ class WinnerCard extends StatelessWidget {
 
         if (state.status.isSuccess) {
           return Center(
-            child: SizedBox(
-              width: _mediaquery.size.width / 1.5,
-              height: _mediaquery.size.height / 2.0,
-              child: Card(
+            child: Card(
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           state.winner!.name,
-                          style: _theme.textTheme.headline3,
+                          style: _theme.textTheme.headline4,
                         ),
                         Text(
                           '${state.winner!.venue}',
-                          style: _theme.textTheme.headline4,
+                          style: _theme.textTheme.headline5,
                         ),
                       ],
                     ),
                     if (state.winner!.crestUrl != null)
-                      Image.network(state.winner!.crestUrl!),
+                      Image.network(
+                        state.winner!.crestUrl!,
+                        width: _mediaquery.size.width / 3.5,
+                      ),
                   ],
                 ),
               ),
