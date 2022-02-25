@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_football_test/repository/models/team_type.dart';
+import 'package:flutter_football_test/utils/evalutate_team_type.dart';
 
 class Score {
   const Score({required this.winner});
@@ -12,12 +13,7 @@ class Score {
     }
 
     return Score(
-      // TODO(Brydie): Split this into it's own util function.
-      winner: json['winner'] != null
-          ? TeamType.values.firstWhere(
-              (e) => describeEnum(e) == json['winner'],
-            )
-          : TeamType.DRAW,
+      winner: evalutateTeamType(json['winner']),
     );
   }
 }

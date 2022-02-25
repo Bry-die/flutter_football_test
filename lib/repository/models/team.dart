@@ -1,4 +1,3 @@
-// TODO(Brydie): Flesh out with properties to display in the app.
 class Team {
   const Team({
     required this.id,
